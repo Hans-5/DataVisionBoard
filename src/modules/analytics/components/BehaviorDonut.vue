@@ -36,14 +36,21 @@
     ],
   }))
 
-  watch(behaviorPie, (d) => {
-    if (!d?.length) return
-    updateOption({
-      series: [
-        {
-          data: d.map((item, i) => ({ ...item, itemStyle: { color: COLORS[i % COLORS.length] } })),
-        },
-      ],
-    })
-  })
+  watch(
+    behaviorPie,
+    (d) => {
+      if (!d?.length) return
+      updateOption({
+        series: [
+          {
+            data: d.map((item, i) => ({
+              ...item,
+              itemStyle: { color: COLORS[i % COLORS.length] },
+            })),
+          },
+        ],
+      })
+    },
+    { deep: true }
+  )
 </script>

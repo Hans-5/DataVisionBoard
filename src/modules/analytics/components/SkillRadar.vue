@@ -38,8 +38,15 @@
     ],
   }))
 
-  watch(radarData, (d) => {
-    if (!d) return
-    updateOption({ radar: { indicator: d.indicators }, series: [{ data: [{ value: d.values }] }] })
-  })
+  watch(
+    radarData,
+    (d) => {
+      if (!d) return
+      updateOption({
+        radar: { indicator: d.indicators },
+        series: [{ data: [{ value: d.values }] }],
+      })
+    },
+    { deep: true }
+  )
 </script>

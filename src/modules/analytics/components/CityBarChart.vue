@@ -43,8 +43,12 @@
     ],
   }))
 
-  watch(cityBar, (d) => {
-    if (!d) return
-    updateOption({ xAxis: { data: d.cities }, series: [{ data: d.values }] })
-  })
+  watch(
+    cityBar,
+    (d) => {
+      if (!d) return
+      updateOption({ xAxis: { data: d.cities }, series: [{ data: d.values }] })
+    },
+    { deep: true }
+  )
 </script>
