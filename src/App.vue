@@ -185,7 +185,7 @@
 
   .charts-grid {
     display: grid;
-    grid-template-columns: 1fr 1.4fr 1fr;
+    grid-template-columns: 1fr 2fr 1fr;
     gap: 14px;
     flex: 1;
   }
@@ -205,7 +205,7 @@
   }
   .col-center > * {
     flex: 1;
-    min-height: 380px;
+    min-height: 520px;
   }
 
   .footer {

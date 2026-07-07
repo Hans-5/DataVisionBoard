@@ -50,7 +50,7 @@
     box-shadow: inset 0 0 30px rgba(0, 200, 255, 0.08);
   }
   .chart-box--tall .chart-box__body {
-    min-height: 280px;
+    min-height: 460px;
   }
 
   .chart-box__header {
