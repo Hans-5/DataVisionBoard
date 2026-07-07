@@ -12,7 +12,8 @@
 
   const { behaviorPie } = useAnalyticsData()
 
-  const COLORS = ['#00b4ff', '#ff6b6b', '#ffd166', '#06d6a0', '#9b5de5']
+  // orange replaces red for a warmer, more vivid palette
+  const COLORS = ['#00b4ff', '#ff9500', '#ffd166', '#06d6a0', '#9b5de5']
 
   const { el, updateOption } = useChart(() => ({
     backgroundColor: 'transparent',
@@ -30,7 +31,10 @@
         center: ['38%', '50%'],
         avoidLabelOverlap: false,
         label: { show: false },
-        emphasis: { label: { show: true, fontSize: 12, color: '#fff' } },
+        emphasis: {
+          label: { show: true, fontSize: 12, color: '#fff', fontWeight: 'bold' },
+          itemStyle: { shadowBlur: 20, shadowColor: 'rgba(0,0,0,0.5)' },
+        },
         data: [],
       },
     ],
@@ -45,7 +49,11 @@
           {
             data: d.map((item, i) => ({
               ...item,
-              itemStyle: { color: COLORS[i % COLORS.length] },
+              itemStyle: {
+                color: COLORS[i % COLORS.length],
+                shadowBlur: 8,
+                shadowColor: COLORS[i % COLORS.length],
+              },
             })),
           },
         ],

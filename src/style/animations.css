@@ -30,6 +30,13 @@
   50%       { opacity: 0.3; }
 }
 
+/* Node glow pulse — eased in and out so reset is invisible */
+@keyframes nodeGlow {
+  0%   { box-shadow: 0 0 8px rgba(0, 229, 255, 0.4); }
+  50%  { box-shadow: 0 0 24px rgba(0, 229, 255, 0.9); }
+  100% { box-shadow: 0 0 8px rgba(0, 229, 255, 0.4); }
+}
+
 .anim-fade-up {
   animation: fadeSlideUp 0.5s ease both;
 }

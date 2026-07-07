@@ -1,6 +1,6 @@
 export default {
   nodes: [
-    { id: 'core', name: '数据中台', value: 60, category: 0 },
+    { id: 'core', name: '数据中台', value: 80, category: 0 },
     { id: 'user', name: '用户服务', value: 40, category: 1 },
     { id: 'course', name: '课程服务', value: 40, category: 1 },
     { id: 'report', name: '报表服务', value: 35, category: 1 },

@@ -35,13 +35,17 @@
     flex-direction: column;
     gap: 8px;
     backdrop-filter: blur(4px);
+    box-shadow: inset 0 0 20px rgba(0, 180, 255, 0.04);
     animation:
       fadeSlideUp 0.5s ease both,
       borderPulse 4s ease-in-out infinite;
-    transition: border-color 0.3s;
+    transition:
+      border-color 0.3s,
+      box-shadow 0.3s;
   }
   .chart-box:hover {
     border-color: rgba(0, 200, 255, 0.5);
+    box-shadow: inset 0 0 30px rgba(0, 200, 255, 0.08);
   }
   .chart-box--tall .chart-box__body {
     min-height: 280px;

@@ -1,6 +1,6 @@
 <template>
   <ChartBox title="服务架构网络 · 点击节点可拖拽" :tall="true">
-    <div ref="el" style="height: 100%; min-height: 280px" />
+    <div ref="el" style="height: 100%; min-height: 320px" />
   </ChartBox>
 </template>
 
@@ -12,7 +12,14 @@
 
   const { nodes, links, categories } = useNetworkData()
 
-  const PALETTE = ['#00e5ff', '#06d6a0', '#ffd166', '#ff6b6b']
+  // cyan → teal → orange → soft red
+  const PALETTE = ['#00e5ff', '#06d6a0', '#ffb347', '#ff6b6b']
+  const GLOW = [
+    'rgba(0,229,255,0.7)',
+    'rgba(6,214,160,0.7)',
+    'rgba(255,179,71,0.7)',
+    'rgba(255,107,107,0.7)',
+  ]
 
   const { el, updateOption } = useChart(() => ({
     backgroundColor: 'transparent',
@@ -38,9 +45,8 @@
         categories: [],
         data: [],
         edges: [],
-        force: { repulsion: 280, edgeLength: [60, 120], gravity: 0.08 },
+        force: { repulsion: 320, edgeLength: [70, 140], gravity: 0.06, friction: 0.6 },
         symbol: 'circle',
-        itemStyle: { borderColor: 'rgba(255,255,255,0.3)', borderWidth: 1 },
         label: {
           show: true,
           position: 'bottom',
@@ -49,12 +55,19 @@
         },
         emphasis: {
           focus: 'adjacency',
-          lineStyle: { width: 3 },
-          label: { show: true, fontSize: 12, color: '#fff' },
+          scale: true,
+          scaleSize: 1.2,
+          lineStyle: { width: 3, shadowBlur: 8, shadowColor: 'rgba(0,200,255,0.6)' },
+          label: { show: true, fontSize: 12, color: '#fff', fontWeight: 'bold' },
         },
         edgeSymbol: ['none', 'arrow'],
         edgeSymbolSize: 6,
-        lineStyle: { color: 'rgba(0,180,255,0.3)', curveness: 0.2 },
+        lineStyle: {
+          color: 'rgba(0,200,255,0.25)',
+          curveness: 0.25,
+          shadowBlur: 6,
+          shadowColor: 'rgba(0,180,255,0.3)',
+        },
       },
     ],
   }))
@@ -68,11 +81,13 @@
           categories: c,
           data: n.map((node) => ({
             ...node,
-            symbolSize: node.value * 0.7,
+            symbolSize: node.value * 0.9,
             itemStyle: {
               color: PALETTE[node.category % PALETTE.length],
-              shadowBlur: 18,
-              shadowColor: PALETTE[node.category % PALETTE.length],
+              borderColor: 'rgba(255,255,255,0.25)',
+              borderWidth: 1.5,
+              shadowBlur: 30,
+              shadowColor: GLOW[node.category % GLOW.length],
             },
           })),
           edges: l,

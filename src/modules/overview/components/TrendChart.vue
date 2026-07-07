@@ -1,6 +1,6 @@
 <template>
   <ChartBox title="月度用户增长趋势">
-    <div ref="el" style="height: 180px" />
+    <div ref="el" style="height: 100%; min-height: 180px" />
   </ChartBox>
 </template>
 
@@ -33,7 +33,12 @@
         data: [],
         smooth: true,
         symbol: 'none',
-        lineStyle: { color: '#00c8ff', width: 2 },
+        lineStyle: {
+          color: '#00c8ff',
+          width: 2,
+          shadowBlur: 8,
+          shadowColor: 'rgba(0,200,255,0.5)',
+        },
         areaStyle: {
           color: new ec.graphic.LinearGradient(0, 0, 0, 1, [
             { offset: 0, color: 'rgba(0,200,255,0.4)' },
