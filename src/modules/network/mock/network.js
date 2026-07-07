@@ -1,0 +1,28 @@
+export default {
+  nodes: [
+    { id: 'core', name: '数据中台', value: 60, category: 0 },
+    { id: 'user', name: '用户服务', value: 40, category: 1 },
+    { id: 'course', name: '课程服务', value: 40, category: 1 },
+    { id: 'report', name: '报表服务', value: 35, category: 1 },
+    { id: 'ai', name: 'AI 推荐', value: 35, category: 2 },
+    { id: 'mobile', name: '移动端', value: 28, category: 2 },
+    { id: 'web', name: 'Web 端', value: 28, category: 2 },
+    { id: 'admin', name: '管理后台', value: 25, category: 2 },
+    { id: 'monitor', name: '监控系统', value: 22, category: 3 },
+    { id: 'log', name: '日志服务', value: 22, category: 3 },
+  ],
+  links: [
+    { source: 'core', target: 'user' },
+    { source: 'core', target: 'course' },
+    { source: 'core', target: 'report' },
+    { source: 'user', target: 'ai' },
+    { source: 'user', target: 'mobile' },
+    { source: 'course', target: 'web' },
+    { source: 'course', target: 'ai' },
+    { source: 'report', target: 'admin' },
+    { source: 'core', target: 'monitor' },
+    { source: 'core', target: 'log' },
+    { source: 'mobile', target: 'web' },
+  ],
+  categories: [{ name: '核心层' }, { name: '服务层' }, { name: '应用层' }, { name: '基础设施' }],
+}

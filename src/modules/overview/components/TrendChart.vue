@@ -1,0 +1,51 @@
+<template>
+  <ChartBox title="月度用户增长趋势">
+    <div ref="el" style="height: 180px" />
+  </ChartBox>
+</template>
+
+<script setup>
+  import { watch } from 'vue'
+  import ChartBox from '../../../shared/components/ChartBox.vue'
+  import { useChart } from '../../../core/composables/useChart.js'
+  import { useOverviewData } from '../composables/useOverviewData.js'
+
+  const { trend } = useOverviewData()
+
+  const { el, updateOption } = useChart((ec) => ({
+    backgroundColor: 'transparent',
+    grid: { top: 10, right: 10, bottom: 24, left: 44 },
+    tooltip: { trigger: 'axis', backgroundColor: '#0d2540', borderColor: '#1e6fa8' },
+    xAxis: {
+      type: 'category',
+      data: [],
+      axisLine: { lineStyle: { color: '#1e4060' } },
+      axisLabel: { color: '#5a9fc0', fontSize: 10 },
+    },
+    yAxis: {
+      type: 'value',
+      splitLine: { lineStyle: { color: '#132840' } },
+      axisLabel: { color: '#5a9fc0', fontSize: 10 },
+    },
+    series: [
+      {
+        type: 'line',
+        data: [],
+        smooth: true,
+        symbol: 'none',
+        lineStyle: { color: '#00c8ff', width: 2 },
+        areaStyle: {
+          color: new ec.graphic.LinearGradient(0, 0, 0, 1, [
+            { offset: 0, color: 'rgba(0,200,255,0.4)' },
+            { offset: 1, color: 'rgba(0,200,255,0.02)' },
+          ]),
+        },
+      },
+    ],
+  }))
+
+  watch(trend, (d) => {
+    if (!d) return
+    updateOption({ xAxis: { data: d.months }, series: [{ data: d.values }] })
+  })
+</script>
