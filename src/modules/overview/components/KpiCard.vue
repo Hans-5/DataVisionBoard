@@ -41,6 +41,7 @@
     position: relative;
     background: rgba(0, 180, 255, 0.06);
     border: 1px solid rgba(0, 180, 255, 0.2);
+    border-left: 3px solid rgba(0, 200, 255, 0.6);
     border-radius: 6px;
     padding: 18px 20px 14px;
     display: flex;

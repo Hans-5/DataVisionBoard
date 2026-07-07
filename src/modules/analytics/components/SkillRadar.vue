@@ -1,5 +1,5 @@
 <template>
-  <ChartBox title="综合能力评估">
+  <ChartBox title="综合能力评估" tag="Ability">
     <div ref="el" style="height: 100%; min-height: 160px" />
   </ChartBox>
 </template>

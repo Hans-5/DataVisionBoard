@@ -12,6 +12,7 @@
           <h1 class="header-title">数据视界 · DataVisionBoard</h1>
           <span class="bracket">】</span>
         </div>
+        <p class="header-subtitle">MOCK DATA VISUALIZATION TEACHING DASHBOARD</p>
         <div class="header-scan" />
       </div>
       <div class="header-right">
@@ -46,6 +47,8 @@
       </div>
     </section>
 
+    <ActivityTicker />
+
     <footer class="footer">
       DataVisionBoard · 数据视界 © 2026 &nbsp;|&nbsp; Vue 3 + Vite + ECharts
     </footer>
@@ -60,6 +63,7 @@
   import CityBarChart from './modules/analytics/components/CityBarChart.vue'
   import SkillRadar from './modules/analytics/components/SkillRadar.vue'
   import NetworkGraph from './modules/network/components/NetworkGraph.vue'
+  import ActivityTicker from './modules/activity/components/ActivityTicker.vue'
   import { useOverviewData } from './modules/overview/composables/useOverviewData.js'
 
   const { kpis } = useOverviewData()
@@ -156,6 +160,12 @@
       0 0 24px rgba(0, 200, 255, 0.6),
       0 0 48px rgba(0, 100, 200, 0.3);
     white-space: nowrap;
+  }
+  .header-subtitle {
+    font-size: 11px;
+    color: rgba(0, 180, 255, 0.5);
+    letter-spacing: 2px;
+    margin: 0;
   }
   .header-scan {
     position: absolute;

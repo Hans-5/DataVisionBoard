@@ -7,6 +7,7 @@
     <div class="chart-box__header">
       <span class="chart-box__dot" />
       <span class="chart-box__title">{{ title }}</span>
+      <span v-if="tag" class="chart-box__tag">{{ tag }}</span>
       <slot name="actions" />
     </div>
     <div class="chart-box__divider" />
@@ -21,6 +22,7 @@
     title: { type: String, required: true },
     tall: { type: Boolean, default: false },
     delay: { type: String, default: '0s' },
+    tag: { type: String, default: '' },
   })
 </script>
 
@@ -71,6 +73,16 @@
     letter-spacing: 1px;
     text-transform: uppercase;
     flex: 1;
+  }
+  .chart-box__tag {
+    font-size: 10px;
+    color: #00c8ff;
+    border: 1px solid rgba(0, 200, 255, 0.4);
+    padding: 1px 6px;
+    border-radius: 3px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    flex-shrink: 0;
   }
   .chart-box__divider {
     height: 1px;

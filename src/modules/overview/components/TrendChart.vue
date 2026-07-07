@@ -1,5 +1,5 @@
 <template>
-  <ChartBox title="月度用户增长趋势">
+  <ChartBox title="月度用户增长趋势" tag="Trend">
     <div ref="el" style="height: 100%; min-height: 180px" />
   </ChartBox>
 </template>

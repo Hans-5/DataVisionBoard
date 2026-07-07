@@ -1,5 +1,5 @@
 <template>
-  <ChartBox title="数据中台 · 服务架构网络" :tall="true">
+  <ChartBox title="数据中台 · 服务架构网络" :tall="true" tag="Overview">
     <div ref="el" style="flex: 1; min-height: 0; width: 100%" />
   </ChartBox>
 </template>

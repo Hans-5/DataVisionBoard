@@ -1,5 +1,5 @@
 <template>
-  <ChartBox title="用户行为分布">
+  <ChartBox title="用户行为分布" tag="Dist">
     <div ref="el" style="height: 100%; min-height: 160px" />
   </ChartBox>
 </template>
