@@ -3,6 +3,7 @@
 A real-time data visualization dashboard built with **Vue 3 + Vite + ECharts**.
 
 🔗 **Live Demo → [hans-5.github.io/DataVisionBoard](https://hans-5.github.io/DataVisionBoard/)**
+<img width="1915" height="942" alt="image" src="https://github.com/user-attachments/assets/97e168bb-997d-4bd9-994f-8a2c9496407a" />
 
 ---
 
