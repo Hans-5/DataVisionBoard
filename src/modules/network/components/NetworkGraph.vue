@@ -1,5 +1,5 @@
 <template>
-  <ChartBox title="服务架构网络 · 点击节点可拖拽" :tall="true">
+  <ChartBox title="数据中台 · 服务架构网络" :tall="true">
     <div ref="el" style="height: 100%; min-height: 320px" />
   </ChartBox>
 </template>
@@ -12,13 +12,12 @@
 
   const { nodes, links, categories } = useNetworkData()
 
-  // cyan → teal → orange → soft red
   const PALETTE = ['#00e5ff', '#06d6a0', '#ffb347', '#ff6b6b']
   const GLOW = [
-    'rgba(0,229,255,0.7)',
-    'rgba(6,214,160,0.7)',
-    'rgba(255,179,71,0.7)',
-    'rgba(255,107,107,0.7)',
+    'rgba(0,229,255,0.8)',
+    'rgba(6,214,160,0.8)',
+    'rgba(255,179,71,0.8)',
+    'rgba(255,107,107,0.8)',
   ]
 
   const { el, updateOption } = useChart(() => ({
@@ -45,7 +44,14 @@
         categories: [],
         data: [],
         edges: [],
-        force: { repulsion: 320, edgeLength: [70, 140], gravity: 0.06, friction: 0.6 },
+        // Higher gravity + friction keeps core node naturally centered
+        force: {
+          repulsion: 300,
+          edgeLength: [80, 150],
+          gravity: 0.15,
+          friction: 0.65,
+          layoutAnimation: true,
+        },
         symbol: 'circle',
         label: {
           show: true,
@@ -57,16 +63,19 @@
           focus: 'adjacency',
           scale: true,
           scaleSize: 1.2,
-          lineStyle: { width: 3, shadowBlur: 8, shadowColor: 'rgba(0,200,255,0.6)' },
+          lineStyle: { width: 3 },
           label: { show: true, fontSize: 12, color: '#fff', fontWeight: 'bold' },
         },
         edgeSymbol: ['none', 'arrow'],
         edgeSymbolSize: 6,
+        // Smooth glow on edges — no flickering because we use a CSS-independent shadow
         lineStyle: {
-          color: 'rgba(0,200,255,0.25)',
-          curveness: 0.25,
-          shadowBlur: 6,
-          shadowColor: 'rgba(0,180,255,0.3)',
+          color: new Array(1).fill('rgba(0,229,255,0.35)')[0],
+          width: 1.5,
+          curveness: 0.3,
+          shadowBlur: 8,
+          shadowColor: 'rgba(0,200,255,0.5)',
+          opacity: 0.8,
         },
       },
     ],
@@ -82,9 +91,11 @@
           data: n.map((node) => ({
             ...node,
             symbolSize: node.value * 0.9,
+            // Pin the core node at center so it never drifts
+            ...(node.category === 0 ? { x: 0, y: 0, fixed: true } : {}),
             itemStyle: {
               color: PALETTE[node.category % PALETTE.length],
-              borderColor: 'rgba(255,255,255,0.25)',
+              borderColor: 'rgba(255,255,255,0.3)',
               borderWidth: 1.5,
               shadowBlur: 30,
               shadowColor: GLOW[node.category % GLOW.length],

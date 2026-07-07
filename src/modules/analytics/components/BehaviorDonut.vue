@@ -1,6 +1,6 @@
 <template>
   <ChartBox title="用户行为分布">
-    <div ref="el" style="height: 160px" />
+    <div ref="el" style="height: 100%; min-height: 160px" />
   </ChartBox>
 </template>
 

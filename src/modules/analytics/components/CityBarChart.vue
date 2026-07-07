@@ -1,6 +1,6 @@
 <template>
   <ChartBox title="城市分布 TOP 6">
-    <div ref="el" style="height: 160px" />
+    <div ref="el" style="height: 100%; min-height: 160px" />
   </ChartBox>
 </template>
 

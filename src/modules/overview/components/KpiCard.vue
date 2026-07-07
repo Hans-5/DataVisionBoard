@@ -3,8 +3,8 @@
     <div class="kpi-label">
       {{ label }}
     </div>
-    <div class="kpi-value">
-      {{ animatedValue }}
+    <div :key="flashKey" class="kpi-value">
+      {{ value }}
     </div>
     <div class="kpi-sub">
       {{ sub }}
@@ -17,7 +17,7 @@
 </template>
 
 <script setup>
-  import { useCountUp } from '../../../core/composables/useCountUp.js'
+  import { ref, watch } from 'vue'
 
   const props = defineProps({
     label: { type: String, default: '' },
@@ -26,7 +26,14 @@
     delay: { type: String, default: '0s' },
   })
 
-  const animatedValue = useCountUp(props.value)
+  // Re-key forces the CSS flash animation to replay on every live update
+  const flashKey = ref(0)
+  watch(
+    () => props.value,
+    () => {
+      flashKey.value++
+    }
+  )
 </script>
 
 <style scoped>
@@ -66,14 +73,13 @@
     color: #fff;
     letter-spacing: 1px;
     text-shadow: 0 0 16px rgba(0, 200, 255, 0.4);
-    animation: valueFlash 1s ease both;
+    animation: valueFlash 0.6s ease both;
   }
   .kpi-sub {
     font-size: 11px;
     color: #4a90b8;
   }
 
-  /* Corner brackets */
   .kpi-corner {
     position: absolute;
     width: 8px;
