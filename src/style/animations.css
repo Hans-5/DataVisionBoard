@@ -1,0 +1,35 @@
+/* Global animation utilities */
+
+/* Fade + slide up on mount */
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Glowing border pulse */
+@keyframes borderPulse {
+  0%, 100% { box-shadow: 0 0 0px rgba(0, 180, 255, 0); }
+  50%       { box-shadow: 0 0 14px rgba(0, 180, 255, 0.35); }
+}
+
+/* Scan line sweep across header */
+@keyframes scanLine {
+  0%   { left: -100%; }
+  100% { left: 100%; }
+}
+
+/* Number flash on update */
+@keyframes valueFlash {
+  0%   { color: #ffffff; text-shadow: 0 0 12px #00e5ff; }
+  100% { color: #ffffff; text-shadow: none; }
+}
+
+/* Corner bracket blink */
+@keyframes bracketBlink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.3; }
+}
+
+.anim-fade-up {
+  animation: fadeSlideUp 0.5s ease both;
+}
