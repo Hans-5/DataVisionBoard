@@ -2,16 +2,9 @@
 
 A real-time data visualization dashboard built with Vue 3, Vite, and ECharts. All data is simulated with live-updating intervals, so every chart animates without needing a backend or database connection.
 
-<<<<<<< HEAD
-🔗 **Live Demo → [hans-5.github.io/DataVisionBoard](https://hans-5.github.io/DataVisionBoard/)**
-<img width="1915" height="942" alt="image" src="https://github.com/user-attachments/assets/97e168bb-997d-4bd9-994f-8a2c9496407a" />
-=======
 🔗 **Live Demo: [hans-5.github.io/DataVisionBoard](https://hans-5.github.io/DataVisionBoard/)**
 
 <img width="1915" height="942" alt="image" src="https://github.com/user-attachments/assets/97e168bb-997d-4bd9-994f-8a2c9496407a" />
->>>>>>> 822a12c (docs: complete README with features, setup steps, structure, version history)
-
----
 
 ## What This Project Does
 
