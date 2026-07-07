@@ -18,7 +18,7 @@
       indicator: [],
       shape: 'polygon',
       splitNumber: 4,
-      axisName: { color: '#7ecfff', fontSize: 10 },
+      axisName: { color: '#7ecfff', fontSize: 12 },
       splitLine: { lineStyle: { color: 'rgba(0,180,255,0.15)' } },
       splitArea: { show: false },
       axisLine: { lineStyle: { color: 'rgba(0,180,255,0.2)' } },
@@ -47,6 +47,6 @@
         series: [{ data: [{ value: d.values }] }],
       })
     },
-    { deep: true }
+    { deep: true, immediate: true }
   )
 </script>

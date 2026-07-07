@@ -66,9 +66,9 @@
     animation: bracketBlink 1.8s ease-in-out infinite;
   }
   .chart-box__title {
-    font-size: 11px;
+    font-size: 13px;
     color: #7ecfff;
-    letter-spacing: 1.5px;
+    letter-spacing: 1px;
     text-transform: uppercase;
     flex: 1;
   }
@@ -78,5 +78,8 @@
   }
   .chart-box__body {
     flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
   }
 </style>

@@ -112,7 +112,7 @@
     align-items: center;
     gap: 10px;
     min-width: 200px;
-    font-size: 12px;
+    font-size: 13px;
     color: #4a90b8;
   }
   .header-right {
@@ -200,7 +200,7 @@
 
   .footer {
     text-align: center;
-    font-size: 11px;
+    font-size: 12px;
     color: #2a5070;
     padding-top: 8px;
     border-top: 1px solid rgba(0, 180, 255, 0.1);

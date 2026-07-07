@@ -1,6 +1,6 @@
 <template>
   <ChartBox title="数据中台 · 服务架构网络" :tall="true">
-    <div ref="el" style="height: 360px" />
+    <div ref="el" style="flex: 1; min-height: 0; width: 100%" />
   </ChartBox>
 </template>
 
@@ -57,7 +57,7 @@
           show: true,
           position: 'bottom',
           color: '#a0d8ff',
-          fontSize: 10,
+          fontSize: 12,
         },
         emphasis: {
           focus: 'adjacency',

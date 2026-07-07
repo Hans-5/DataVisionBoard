@@ -21,7 +21,7 @@
     legend: {
       orient: 'horizontal',
       bottom: 0,
-      textStyle: { color: '#7ecfff', fontSize: 9 },
+      textStyle: { color: '#7ecfff', fontSize: 11 },
     },
     series: [
       {
@@ -33,7 +33,7 @@
           show: true,
           position: 'outside',
           color: '#7ecfff',
-          fontSize: 10,
+          fontSize: 11,
           formatter: '{b}\n{d}%',
         },
         labelLine: {

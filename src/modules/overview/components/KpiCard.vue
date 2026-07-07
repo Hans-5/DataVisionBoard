@@ -62,13 +62,13 @@
     animation: scanLine 3s linear infinite;
   }
   .kpi-label {
-    font-size: 11px;
+    font-size: 13px;
     color: #7ecfff;
     text-transform: uppercase;
     letter-spacing: 1.5px;
   }
   .kpi-value {
-    font-size: 30px;
+    font-size: 34px;
     font-weight: 700;
     color: #fff;
     letter-spacing: 1px;
@@ -76,7 +76,7 @@
     animation: valueFlash 0.6s ease both;
   }
   .kpi-sub {
-    font-size: 11px;
+    font-size: 13px;
     color: #4a90b8;
   }
 

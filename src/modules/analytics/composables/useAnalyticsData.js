@@ -41,13 +41,13 @@ export function useAnalyticsData() {
         }, 4000)
       )
 
-      // Live: radar values every 5 s
+      // Live: radar values every 5 s — ±15% so changes are visible
       timers.push(
         setInterval(() => {
           radar.value = {
             ...radar.value,
             values: radar.value.values.map((v) =>
-              Math.min(100, Math.max(20, Math.round(v * (1 + (Math.random() * 0.08 - 0.04)))))
+              Math.min(100, Math.max(20, Math.round(v * (1 + (Math.random() * 0.3 - 0.15)))))
             ),
           }
         }, 5000)

@@ -20,12 +20,12 @@
       type: 'category',
       data: [],
       axisLine: { lineStyle: { color: '#1e4060' } },
-      axisLabel: { color: '#5a9fc0', fontSize: 10 },
+      axisLabel: { color: '#5a9fc0', fontSize: 12 },
     },
     yAxis: {
       type: 'value',
       splitLine: { lineStyle: { color: '#132840' } },
-      axisLabel: { color: '#5a9fc0', fontSize: 10 },
+      axisLabel: { color: '#5a9fc0', fontSize: 12 },
     },
     series: [
       {
