@@ -1,6 +1,6 @@
 <template>
   <ChartBox title="数据中台 · 服务架构网络" :tall="true">
-    <div ref="el" style="height: 100%; min-height: 320px" />
+    <div ref="el" style="height: 360px" />
   </ChartBox>
 </template>
 
@@ -48,7 +48,7 @@
         force: {
           repulsion: 300,
           edgeLength: [80, 150],
-          gravity: 0.15,
+          gravity: 0.25,
           friction: 0.65,
           layoutAnimation: true,
         },
@@ -70,7 +70,7 @@
         edgeSymbolSize: 6,
         // Smooth glow on edges — no flickering because we use a CSS-independent shadow
         lineStyle: {
-          color: new Array(1).fill('rgba(0,229,255,0.35)')[0],
+          color: 'rgba(0,229,255,0.35)',
           width: 1.5,
           curveness: 0.3,
           shadowBlur: 8,
@@ -91,8 +91,6 @@
           data: n.map((node) => ({
             ...node,
             symbolSize: node.value * 0.9,
-            // Pin the core node at center so it never drifts
-            ...(node.category === 0 ? { x: 0, y: 0, fixed: true } : {}),
             itemStyle: {
               color: PALETTE[node.category % PALETTE.length],
               borderColor: 'rgba(255,255,255,0.3)',

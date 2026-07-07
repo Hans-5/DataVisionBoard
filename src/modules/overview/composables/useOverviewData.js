@@ -11,19 +11,34 @@ function fluctuate(valStr, maxPct = 0.03) {
   return isFloat ? next.toFixed(1) : Math.round(next).toLocaleString()
 }
 
+function buildSub(i, currentStr, originalNums) {
+  if (i === 3) return '满分 100 分'
+  const cur = parseFloat(String(currentStr).replace(/,/g, ''))
+  const orig = originalNums[i]
+  if (i === 2) {
+    const diff = Math.max(0, Math.round(cur - orig))
+    return `本月新增 ${diff.toLocaleString()}`
+  }
+  const pct = (((cur - orig) / orig) * 100).toFixed(1)
+  const arrow = cur >= orig ? '↑' : '↓'
+  const label = i === 0 ? '较上月' : '较昨日'
+  return `${arrow} ${Math.abs(pct)}% ${label}`
+}
+
 export function useOverviewData() {
   const rawKpis = ref([])
   const liveValues = ref([])
+  const liveSubs = ref([])
   const trend = ref(null)
   const loading = ref(false)
   const error = ref(null)
   const timers = []
+  const originalNums = []
 
-  // Computed so template re-renders on every tick
   const kpis = computed(() =>
     rawKpis.value.map((k, i) => ({
       label: k.label,
-      sub: k.sub,
+      sub: liveSubs.value[i] ?? k.sub,
       value: liveValues.value[i] ?? k.value,
     }))
   )
@@ -36,7 +51,13 @@ export function useOverviewData() {
       trend.value = data.trend
       liveValues.value = data.kpis.map((k) => k.value)
 
-      // Each KPI card ticks on its own staggered interval
+      originalNums.splice(
+        0,
+        originalNums.length,
+        ...data.kpis.map((k) => parseFloat(String(k.value).replace(/,/g, '')))
+      )
+      liveSubs.value = data.kpis.map((_, i) => buildSub(i, data.kpis[i].value, originalNums))
+
       data.kpis.forEach((_, i) => {
         timers.push(
           setInterval(
@@ -44,13 +65,15 @@ export function useOverviewData() {
               const next = [...liveValues.value]
               next[i] = fluctuate(next[i])
               liveValues.value = next
+              const subs = [...liveSubs.value]
+              subs[i] = buildSub(i, next[i], originalNums)
+              liveSubs.value = subs
             },
             2500 + i * 500
           )
         )
       })
 
-      // Trend: shift oldest month off, push a new jittered value every 4 s
       timers.push(
         setInterval(() => {
           if (!trend.value) return

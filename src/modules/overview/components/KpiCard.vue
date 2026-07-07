@@ -55,8 +55,8 @@
     content: '';
     position: absolute;
     top: 0;
-    left: 0;
-    right: 0;
+    left: -40%;
+    width: 40%;
     height: 2px;
     background: linear-gradient(90deg, transparent, #00c8ff, transparent);
     animation: scanLine 3s linear infinite;

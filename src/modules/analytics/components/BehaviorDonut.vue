@@ -19,18 +19,29 @@
     backgroundColor: 'transparent',
     tooltip: { trigger: 'item', backgroundColor: '#0d2540', borderColor: '#1e6fa8' },
     legend: {
-      orient: 'vertical',
-      right: 10,
-      top: 'center',
-      textStyle: { color: '#7ecfff', fontSize: 10 },
+      orient: 'horizontal',
+      bottom: 0,
+      textStyle: { color: '#7ecfff', fontSize: 9 },
     },
     series: [
       {
         type: 'pie',
-        radius: ['45%', '70%'],
-        center: ['38%', '50%'],
-        avoidLabelOverlap: false,
-        label: { show: false },
+        radius: ['40%', '62%'],
+        center: ['40%', '50%'],
+        avoidLabelOverlap: true,
+        label: {
+          show: true,
+          position: 'outside',
+          color: '#7ecfff',
+          fontSize: 10,
+          formatter: '{b}\n{d}%',
+        },
+        labelLine: {
+          show: true,
+          length: 6,
+          length2: 10,
+          lineStyle: { color: 'rgba(100,200,255,0.5)', width: 1 },
+        },
         emphasis: {
           label: { show: true, fontSize: 12, color: '#fff', fontWeight: 'bold' },
           itemStyle: { shadowBlur: 20, shadowColor: 'rgba(0,0,0,0.5)' },
