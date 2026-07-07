@@ -12,13 +12,7 @@
 
   const { nodes, links, categories } = useNetworkData()
 
-  const PALETTE = ['#00e5ff', '#06d6a0', '#ffb347', '#ff6b6b']
-  const GLOW = [
-    'rgba(0,229,255,0.8)',
-    'rgba(6,214,160,0.8)',
-    'rgba(255,179,71,0.8)',
-    'rgba(255,107,107,0.8)',
-  ]
+  const PALETTE = ['#00e5ff', '#06d6a0', '#ffd166', '#ff6b6b']
 
   const { el, updateOption } = useChart(() => ({
     backgroundColor: 'transparent',
@@ -32,7 +26,7 @@
     legend: {
       data: ['核心层', '服务层', '应用层', '基础设施'],
       bottom: 4,
-      textStyle: { color: '#5a9fc0', fontSize: 10 },
+      textStyle: { color: '#5a9fc0', fontSize: 11 },
       icon: 'circle',
     },
     series: [
@@ -44,15 +38,9 @@
         categories: [],
         data: [],
         edges: [],
-        // Higher gravity + friction keeps core node naturally centered
-        force: {
-          repulsion: 300,
-          edgeLength: [80, 150],
-          gravity: 0.25,
-          friction: 0.65,
-          layoutAnimation: true,
-        },
+        force: { repulsion: 280, edgeLength: [60, 120], gravity: 0.08 },
         symbol: 'circle',
+        itemStyle: { borderColor: 'rgba(255,255,255,0.3)', borderWidth: 1 },
         label: {
           show: true,
           position: 'bottom',
@@ -61,22 +49,12 @@
         },
         emphasis: {
           focus: 'adjacency',
-          scale: true,
-          scaleSize: 1.2,
           lineStyle: { width: 3 },
-          label: { show: true, fontSize: 12, color: '#fff', fontWeight: 'bold' },
+          label: { show: true, fontSize: 13, color: '#fff' },
         },
         edgeSymbol: ['none', 'arrow'],
         edgeSymbolSize: 6,
-        // Smooth glow on edges — no flickering because we use a CSS-independent shadow
-        lineStyle: {
-          color: 'rgba(0,229,255,0.35)',
-          width: 1.5,
-          curveness: 0.3,
-          shadowBlur: 8,
-          shadowColor: 'rgba(0,200,255,0.5)',
-          opacity: 0.8,
-        },
+        lineStyle: { color: 'rgba(0,180,255,0.3)', curveness: 0.2 },
       },
     ],
   }))
@@ -90,13 +68,11 @@
           categories: c,
           data: n.map((node) => ({
             ...node,
-            symbolSize: node.value * 0.9,
+            symbolSize: node.value * 0.7,
             itemStyle: {
               color: PALETTE[node.category % PALETTE.length],
-              borderColor: 'rgba(255,255,255,0.3)',
-              borderWidth: 1.5,
-              shadowBlur: 30,
-              shadowColor: GLOW[node.category % GLOW.length],
+              shadowBlur: 18,
+              shadowColor: PALETTE[node.category % PALETTE.length],
             },
           })),
           edges: l,
